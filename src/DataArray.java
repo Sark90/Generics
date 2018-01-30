@@ -8,7 +8,7 @@ public class DataArray<T> {
             arr[i] = obj[i];
         }
     }
-
+ 
     public T getElementByIndex (int index) {
         if (arr == null || arr.length == 0) {
             System.out.println("Array is not initialized.");
