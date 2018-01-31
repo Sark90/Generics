@@ -65,14 +65,14 @@ public class DataArray<T extends Number & Comparable> {
         System.out.println();
     }
 
-    /*public T getSum() {
-        T sum = (T) (Number) 0;
+    public Double getSum() {
+        Double sum = 0.0;
         if (!isInit()) { return sum; }
-        for (int i=0; i<arr.length; i++) {
-            sum += (T) arr[i];  //
+        for (Number n: arr) {
+            sum += n.doubleValue();
         }
         return sum;
-    }*/
+    }
 
     public T getMin() {
         if (!isInit()) {return (T) (Number) 0;}
@@ -117,12 +117,14 @@ public class DataArray<T extends Number & Comparable> {
         dataInt.printArray(dataInt.getSortedArray());
         System.out.println("Sorted Double array:");
         dataDouble.printArray(dataDouble.getSortedArray());
-
+        System.out.println();
         System.out.println("Integer array, MIN: " + dataInt.getMin());
         System.out.println("Double array, MIN: " + dataDouble.getMin());
-
+        System.out.println();
         System.out.println("Integer array, MAX: " + dataInt.getMax());
         System.out.println("Double array, MAX: " + dataDouble.getMax());
-
+        System.out.println();
+        System.out.println("Integer array, sum: " + dataInt.getSum());
+        System.out.println("Double array, sum: " + dataDouble.getSum());
     }
 }
