@@ -64,6 +64,7 @@ public abstract class ArrOperations extends Thread {
     public static void count(ArrOperations ao, byte operation) {
         threadNum = inputThreadsNum();
         count(ao, operation, threadNum);
+        System.out.println(ao.getResult());
     }
     private static void count(ArrOperations ao, byte operation, int num) {
         ArrOperations threadArr[] = new ArrOperations[0];
@@ -71,19 +72,18 @@ public abstract class ArrOperations extends Thread {
         if (operation!=PRODUCT)
         {
             threadArr = new ArrSum[threadNum];
-        } else {
+        } /*else {
             threadArr = new ArrProduct[threadNum];
-        }
+        }*/
         if(threadNum>ao.getArrSize()) { threadNum = ao.getArrSize(); }
         Timer timer = new Timer();
         timer.start();
         for (int i=0; i<threadNum; i++) {
-            if (operation!=PRODUCT)
-            {
+            if (operation!=PRODUCT) {
                 threadArr[i] = new ArrSum();;
-            } else {
+            } /*else {
                 threadArr[i] = new ArrProduct();
-            }
+            }*/
 
             threadArr[i].start();
         }
@@ -95,26 +95,26 @@ public abstract class ArrOperations extends Thread {
             }
         }
         timer.stop();
-        System.out.println(threadNum + " thread(s):\n\t" + ao.getResult());
-        System.out.println("\tTime passed: " + timer.getTime() + " ns");
+        /*System.out.println(threadNum + " thread(s):\n\t" + ao.getResult());
+        System.out.println("\tTime passed: " + timer.getTime() + " ns");*/
         duration = timer.getTime();
     }
 
     public abstract String getResult();
     public abstract int getArrSize();
 
-    //public static void showArray() {}
-
     public static int getThreadNum() {
         return threadNum;
     }
        public static void getOptimalThreadsNum(ArrOperations ao, byte operation) {
-        System.out.println("\nCalculating the optimal number of threads:");
+        //System.out.println("\nCalculating the optimal number of threads:");
         for(int threadNum = 1; threadNum<=MAX_THREAD_NUM; threadNum++) {
+            long durationSum = 0;
             for (int i=0; i<TESTS_NUM; i++) {
                 count(ao, operation, threadNum);
+                durationSum += duration;
             }
-            durations[threadNum][DURATION_INDEX] = duration;
+            durations[threadNum][DURATION_INDEX] = durationSum/TESTS_NUM;
         }
         long minTime = durations[1][DURATION_INDEX];
         int optimalThreadNum = 1;

@@ -65,18 +65,42 @@ public class DataArray<T extends Number & Comparable> {
         System.out.println();
     }
 
-   /* public T getSum() {
+    /*public T getSum() {
         T sum = (T) (Number) 0;
         if (!isInit()) { return sum; }
         for (int i=0; i<arr.length; i++) {
-            sum += (T) arr[i];
+            sum += (T) arr[i];  //
         }
         return sum;
     }*/
 
+    public T getMin() {
+        if (!isInit()) {return (T) (Number) 0;}
+        T min = (T) arr[0];
+        for(T t: (T[]) arr) {
+            if (t.compareTo(min) < 0) {
+                min = t;
+            }
+        }
+        return min;
+    }
+
+    public T getMax() {
+        if (!isInit()) {
+            return (T) (Number) 0;
+        }
+        T max = (T) arr[0];
+        for(T t: (T[]) arr) {
+            if (t.compareTo(max) > 0) {
+                max = t;
+            }
+        }
+        return max;
+    }
+
     public static void demo() {
         DataArray<Integer> dataInt = new DataArray<>(1, 56, 100, -12, 0);
-        DataArray<Double> dataDouble = new DataArray<>(-9.99, 0.087);
+        DataArray<Double> dataDouble = new DataArray<>(68.5, -9.99, 0.087);
         /*DataArray<String> dataStr = new DataArray<>("Java", "Generics");
         DataArray<Boolean> dataBool = new DataArray<>(true);
         DataArray<Character> dataChar = new DataArray<>();
@@ -93,6 +117,12 @@ public class DataArray<T extends Number & Comparable> {
         dataInt.printArray(dataInt.getSortedArray());
         System.out.println("Sorted Double array:");
         dataDouble.printArray(dataDouble.getSortedArray());
+
+        System.out.println("Integer array, MIN: " + dataInt.getMin());
+        System.out.println("Double array, MIN: " + dataDouble.getMin());
+
+        System.out.println("Integer array, MAX: " + dataInt.getMax());
+        System.out.println("Double array, MAX: " + dataDouble.getMax());
 
     }
 }
