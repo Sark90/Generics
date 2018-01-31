@@ -1,25 +1,21 @@
 package arraycontainer;
 
-public class DataArray<T extends Number & Comparable> {
+public class NumberArray<T extends Number & Comparable> extends AnyDataArray {
 
     private /*Object*/Number[] arr; //T[]
 
-    public DataArray(T...obj) {
+    public NumberArray(T...obj) {
+        super(obj);
         arr = new /*Object*/Number[obj.length];
         for(int i=0; i<obj.length; i++) {
             arr[i] = obj[i];
         }
     }
  
-    private boolean isInit() {
-        if (arr == null || arr.length == 0) {
-            System.out.println("Array is not initialized.");
-            return false;
-        } else {
-            return true;
-        }
+    protected boolean isInit() {
+        return super.isInit(arr);
     }
-    public T getElementByIndex (int index) {
+/*    public T getElementByIndex (int index) {
         if (!isInit()) {
             return null;
         }
@@ -32,7 +28,7 @@ public class DataArray<T extends Number & Comparable> {
         }
         return (T) arr[index];
 
-    }
+    }*/
 
     public T[] getSortedArray() {
         if (!isInit()) {
@@ -55,7 +51,7 @@ public class DataArray<T extends Number & Comparable> {
         }
         return (T[]) sortedArr;
     }
-    public void printArray(T[] array) {
+    private void printArray(T[] array) {
         if (!isInit()) {
             return;
         }
@@ -99,20 +95,12 @@ public class DataArray<T extends Number & Comparable> {
     }
 
     public static void demo() {
-        DataArray<Integer> dataInt = new DataArray<>(1, 56, 100, -12, 0);
-        DataArray<Double> dataDouble = new DataArray<>(68.5, -9.99, 0.087);
-        /*DataArray<String> dataStr = new DataArray<>("Java", "Generics");
-        DataArray<Boolean> dataBool = new DataArray<>(true);
-        DataArray<Character> dataChar = new DataArray<>();
-        DataArray<DataArray> data = new DataArray(new DataArray('A')*//*.getElementByIndex(0)*//*);*/
+        NumberArray<Integer> dataInt = new NumberArray<>(1, 56, 100, -12, 0);
+        NumberArray<Double> dataDouble = new NumberArray<>(68.5, -9.99, 0.087);
 
         System.out.println(dataInt.getElementByIndex(2));
         System.out.println(dataDouble.getElementByIndex(0));
-        /*System.out.println(dataStr.getElementByIndex(1));
-        System.out.println(dataBool.getElementByIndex(10));
-        System.out.println(dataBool.getElementByIndex(0));
-        System.out.println(dataChar.getElementByIndex(0));
-        System.out.println(data.getElementByIndex(0));*/
+
         System.out.println("Sorted Integer array:");
         dataInt.printArray(dataInt.getSortedArray());
         System.out.println("Sorted Double array:");

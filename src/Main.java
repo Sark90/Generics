@@ -1,10 +1,12 @@
-import arraycontainer.DataArray;
-import threads.arraysum.ArrSum;
+import arraycontainer.AnyDataArray;
+import arraycontainer.NumberArray;
 
 public class Main {
 
     public static void main(String[] args) {
-        DataArray.demo();
+        AnyDataArray.demo();
+        System.out.println();
+        NumberArray.demo();
         //ArrSum.demo();
     }
 }
