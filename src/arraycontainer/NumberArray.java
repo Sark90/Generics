@@ -34,8 +34,8 @@ public class NumberArray<T extends Number & Comparable> extends AnyDataArray {
         if (!isInit()) {
             return null;
         }
+        System.out.println("Sorted " + arr[0].getClass().getSimpleName() + " array:");
         Number[] sortedArr = new Number[arr.length];
-        //T[] sortedArr = (T[]) sortedArrDouble;
         for (int i = 0; i < arr.length; i++) {
             sortedArr[i] = arr[i];
         }
@@ -101,11 +101,10 @@ public class NumberArray<T extends Number & Comparable> extends AnyDataArray {
         System.out.println(dataInt.getElementByIndex(2));
         System.out.println(dataDouble.getElementByIndex(0));
 
-        System.out.println("Sorted Integer array:");
         dataInt.printArray(dataInt.getSortedArray());
-        System.out.println("Sorted Double array:");
         dataDouble.printArray(dataDouble.getSortedArray());
         System.out.println();
+
         System.out.println("Integer array, MIN: " + dataInt.getMin());
         System.out.println("Double array, MIN: " + dataDouble.getMin());
         System.out.println();
