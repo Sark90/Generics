@@ -32,7 +32,6 @@ public class AnyDataArray<T> {
             return null;
         }
         return arr[index];
-
     }
 
     public static void demo() {
