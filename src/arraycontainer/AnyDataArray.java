@@ -49,6 +49,5 @@ public class AnyDataArray<T> {
         System.out.println(dataBool.getElementByIndex(0));
         System.out.println(dataChar.getElementByIndex(0));
         System.out.println(data.getElementByIndex(0));
-        System.out.println();
     }
 }

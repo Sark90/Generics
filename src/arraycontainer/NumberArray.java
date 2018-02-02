@@ -52,7 +52,9 @@ public class NumberArray<T extends Number & Comparable> extends AnyDataArray {
 
     public Double getSum() {
         Double sum = 0.0;
-        if (!isInit()) { return sum; }
+        if (!isInit()) {
+            return sum;
+        }
         for (Number n: arr) {
             sum += n.doubleValue();
         }
@@ -60,7 +62,9 @@ public class NumberArray<T extends Number & Comparable> extends AnyDataArray {
     }
 
     public T getMin() {
-        if (!isInit()) {return (T) (Number) 0;}
+        if (!isInit()) {
+            return (T) (Number) 0;
+        }
         T min = arr[0];
         for(T t: arr) {
             if (t.compareTo(min) < 0) {
@@ -107,6 +111,5 @@ public class NumberArray<T extends Number & Comparable> extends AnyDataArray {
         System.out.println("Integer array, sum: " + dataInt.getSum());
         System.out.println("Double array, sum: " + dataDouble.getSum());
         System.out.println("Long array, sum: "+ dataLong.getSum());
-        System.out.println();
     }
 }
