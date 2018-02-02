@@ -39,6 +39,7 @@ public class NumberArray<T extends Number & Comparable> extends AnyDataArray {
         }
         return sortedArr;
     }
+
     private void printArray(T[] array) {
         if (!isInit()) {
             return;
