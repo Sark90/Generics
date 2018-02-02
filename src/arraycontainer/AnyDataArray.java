@@ -1,17 +1,18 @@
 package arraycontainer;
 
 public class AnyDataArray<T> {
-    private Object[] arr; //T[]
+    private T[] arr;
 
     public AnyDataArray(T...obj) {
-        arr = new Object[obj.length];
+        Object objArr = new Object[obj.length];
+        arr = (T[]) objArr;
         for(int i=0; i<obj.length; i++) {
             arr[i] = obj[i];
         }
     }
 
-    protected boolean isInit(Object[] o) {
-        if (o == null || o.length == 0) {
+    protected boolean isInit(T[] t) {
+        if (t == null || t.length == 0) {
             System.out.println("Array is not initialized.");
             return false;
         } else {
@@ -30,7 +31,7 @@ public class AnyDataArray<T> {
             System.out.println("no such index.");
             return null;
         }
-        return (T) arr[index];
+        return arr[index];
 
     }
 
@@ -49,5 +50,6 @@ public class AnyDataArray<T> {
         System.out.println(dataBool.getElementByIndex(0));
         System.out.println(dataChar.getElementByIndex(0));
         System.out.println(data.getElementByIndex(0));
+        System.out.println();
     }
 }

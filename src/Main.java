@@ -7,6 +7,5 @@ public class Main {
         AnyDataArray.demo();
         System.out.println();
         NumberArray.demo();
-        //ArrSum.demo();
     }
 }
