@@ -40,7 +40,7 @@ public class AnyDataArray<T> {
         AnyDataArray<String> dataStr = new AnyDataArray<>("Java", "Generics");
         AnyDataArray<Boolean> dataBool = new AnyDataArray<>(true);
         AnyDataArray<Character> dataChar = new AnyDataArray<>();
-        AnyDataArray<AnyDataArray> data = new AnyDataArray(new AnyDataArray('A')/*.getElementByIndex(0)*/);
+        AnyDataArray<AnyDataArray> data = new AnyDataArray<>(new AnyDataArray('A')/*.getElementByIndex(0)*/);
 
         System.out.println(dataInt.getElementByIndex(2));
         System.out.println(dataDouble.getElementByIndex(0));
